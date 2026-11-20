@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bp8ebxlkk78f7"]
+
+[ext_resource type="Shader" uid="uid://dgksi11e7l2ms" path="res://scroll.gdshader" id="1_cm0pq"]
+[ext_resource type="Script" uid="uid://04eo85gms5il" path="res://CardManager.gd" id="1_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://cxhq4mfds73cw" path="res://star-repeat-sw2.png" id="2_fos0i"]
+[ext_resource type="Script" uid="uid://dehojqxx4kvcy" path="res://PlayerHand.gd" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://vap1cidkr4pq" path="res://gacha_pon.tscn" id="3_fos0i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
+shader = ExtResource("1_cm0pq")
+shader_parameter/speed = 0.0
+
+[node name="Main" type="Node2D" unique_id=1697661070]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1105710640]
+offset_left = -319.0
+offset_top = -353.0
+offset_right = 1537.0
+offset_bottom = 1085.0
+color = Color(0, 0, 0, 1)
+
+[node name="Pattern" type="TextureRect" parent="." unique_id=179685319]
+visible = false
+material = SubResource("ShaderMaterial_uu6xs")
+offset_left = -429.0
+offset_top = -429.0
+offset_right = 1590.0
+offset_bottom = 1094.0
+texture = ExtResource("2_fos0i")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="GachaPon" parent="." unique_id=696379157 instance=ExtResource("3_fos0i")]
+position = Vector2(576, 344)
+
+[node name="CardManager" type="Node2D" parent="." unique_id=1434705296]
+script = ExtResource("1_uu6xs")
+
+[node name="PlayerHand" type="Node2D" parent="." unique_id=36296328]
+script = ExtResource("2_uu6xs")
+
+[node name="SinglePull" type="Button" parent="." unique_id=1353156639]
+offset_left = 84.0
+offset_top = 274.0
+offset_right = 398.0
+offset_bottom = 389.0
+text = "Pull"
+
+[node name="TriplePull" type="Button" parent="." unique_id=1571770162]
+offset_left = 797.0
+offset_top = 269.0
+offset_right = 1110.0
+offset_bottom = 381.0
+text = "Pull x3"
+
+[node name="ClearHand" type="Button" parent="." unique_id=1669170987]
+offset_left = 482.0
+offset_top = 504.0
+offset_right = 711.0
+offset_bottom = 572.0
+text = "Clear"
+
+[connection signal="pressed" from="SinglePull" to="PlayerHand" method="_on_single_pull_pressed"]
+[connection signal="pressed" from="TriplePull" to="PlayerHand" method="_on_triple_pull_pressed"]
+[connection signal="pressed" from="ClearHand" to="PlayerHand" method="_on_clear_hand_pressed"]

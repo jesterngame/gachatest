@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://vap1cidkr4pq"]
+
+[ext_resource type="Script" uid="uid://3ealg7imtom4" path="res://gacha_pon.gd" id="1_6y6m2"]
+[ext_resource type="Texture2D" uid="uid://dqpuo87qixyy1" path="res://gachapon.png" id="1_jliqv"]
+[ext_resource type="Texture2D" uid="uid://bho7fgb668wnl" path="res://handle.png" id="2_6y6m2"]
+
+[node name="GachaPon" type="Node2D" unique_id=696379157]
+script = ExtResource("1_6y6m2")
+
+[node name="Machine" type="Sprite2D" parent="." unique_id=345882231]
+texture = ExtResource("1_jliqv")
+
+[node name="Handle" type="Sprite2D" parent="." unique_id=271613725]
+position = Vector2(0, 89)
+texture = ExtResource("2_6y6m2")

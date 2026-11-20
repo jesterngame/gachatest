@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://phpe3g6j74t"]
+
+[ext_resource type="Script" uid="uid://b53boikv7qu8j" path="res://gacha_ball.gd" id="1_1rkci"]
+[ext_resource type="Texture2D" uid="uid://dm15rf84koxlk" path="res://gachaponball-bottom.png" id="1_lhem8"]
+[ext_resource type="Texture2D" uid="uid://bjknnmks6ajsv" path="res://gachaball-top.png" id="2_1rkci"]
+
+[node name="GachaBall" type="Node2D" unique_id=560030400]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_1rkci")
+
+[node name="BallBottom" type="Sprite2D" parent="." unique_id=1887295655]
+texture = ExtResource("1_lhem8")
+
+[node name="BallTop" type="Sprite2D" parent="." unique_id=2064854547]
+position = Vector2(-1, -41)
+texture = ExtResource("2_1rkci")
