@@ -2,9 +2,18 @@
 
 [ext_resource type="Shader" uid="uid://dgksi11e7l2ms" path="res://scroll.gdshader" id="1_cm0pq"]
 [ext_resource type="Script" uid="uid://04eo85gms5il" path="res://CardManager.gd" id="1_uu6xs"]
-[ext_resource type="Texture2D" uid="uid://cxhq4mfds73cw" path="res://star-repeat-sw2.png" id="2_fos0i"]
+[ext_resource type="Texture2D" uid="uid://dbrq6gqwbtbd5" path="res://star-repeat-s.png" id="2_c2ibq"]
 [ext_resource type="Script" uid="uid://dehojqxx4kvcy" path="res://PlayerHand.gd" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://vap1cidkr4pq" path="res://gacha_pon.tscn" id="3_fos0i"]
+[ext_resource type="Texture2D" uid="uid://bkie66gfvts4g" path="res://buttons/btn-pull-1-n.png" id="6_trn2v"]
+[ext_resource type="Texture2D" uid="uid://cdaf8f8d1y1r7" path="res://buttons/btn-pull-1-o.png" id="7_03owx"]
+[ext_resource type="Texture2D" uid="uid://dy532pgur2evg" path="res://buttons/btn-pull-1-h.png" id="8_wkp8b"]
+[ext_resource type="Texture2D" uid="uid://dvfujuvveijhp" path="res://buttons/btn-confirm-n.png" id="9_20pc6"]
+[ext_resource type="Texture2D" uid="uid://bcwl4o1805634" path="res://buttons/btn-pull-3-n.png" id="9_c2ibq"]
+[ext_resource type="Texture2D" uid="uid://dqn3s7etn4jg0" path="res://buttons/btn-confirm-o.png" id="10_5vvyt"]
+[ext_resource type="Texture2D" uid="uid://begy3avhr2nq0" path="res://buttons/btn-pull-3-o.png" id="10_j4qnp"]
+[ext_resource type="Texture2D" uid="uid://bxypswpxaedtk" path="res://buttons/btn-confirm-h.png" id="11_c6i3y"]
+[ext_resource type="Texture2D" uid="uid://dk8acv8n50v7f" path="res://buttons/btn-pull-3-h.png" id="11_fpfj3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
 shader = ExtResource("1_cm0pq")
@@ -26,7 +35,7 @@ offset_left = -429.0
 offset_top = -429.0
 offset_right = 1590.0
 offset_bottom = 1094.0
-texture = ExtResource("2_fos0i")
+texture = ExtResource("2_c2ibq")
 expand_mode = 1
 stretch_mode = 1
 
@@ -40,6 +49,7 @@ script = ExtResource("1_uu6xs")
 script = ExtResource("2_uu6xs")
 
 [node name="SinglePull" type="Button" parent="." unique_id=1353156639]
+visible = false
 offset_left = 84.0
 offset_top = 274.0
 offset_right = 398.0
@@ -47,6 +57,7 @@ offset_bottom = 389.0
 text = "Pull"
 
 [node name="TriplePull" type="Button" parent="." unique_id=1571770162]
+visible = false
 offset_left = 797.0
 offset_top = 269.0
 offset_right = 1110.0
@@ -54,12 +65,44 @@ offset_bottom = 381.0
 text = "Pull x3"
 
 [node name="ClearHand" type="Button" parent="." unique_id=1669170987]
+visible = false
 offset_left = 482.0
 offset_top = 504.0
 offset_right = 711.0
 offset_bottom = 572.0
 text = "Clear"
 
+[node name="SPull" type="TextureButton" parent="." unique_id=820621668]
+offset_left = 124.0
+offset_top = 294.0
+offset_right = 350.0
+offset_bottom = 373.0
+texture_normal = ExtResource("6_trn2v")
+texture_pressed = ExtResource("7_03owx")
+texture_hover = ExtResource("8_wkp8b")
+
+[node name="TriplePullBtn" type="TextureButton" parent="." unique_id=1845701133]
+offset_left = 797.0
+offset_top = 294.0
+offset_right = 1023.0
+offset_bottom = 373.0
+texture_normal = ExtResource("9_c2ibq")
+texture_pressed = ExtResource("10_j4qnp")
+texture_hover = ExtResource("11_fpfj3")
+
+[node name="ConfirmBtn" type="TextureButton" parent="." unique_id=297630785]
+visible = false
+offset_left = 797.0
+offset_top = 472.0
+offset_right = 1023.0
+offset_bottom = 551.0
+texture_normal = ExtResource("9_20pc6")
+texture_pressed = ExtResource("10_5vvyt")
+texture_hover = ExtResource("11_c6i3y")
+
 [connection signal="pressed" from="SinglePull" to="PlayerHand" method="_on_single_pull_pressed"]
 [connection signal="pressed" from="TriplePull" to="PlayerHand" method="_on_triple_pull_pressed"]
 [connection signal="pressed" from="ClearHand" to="PlayerHand" method="_on_clear_hand_pressed"]
+[connection signal="pressed" from="SPull" to="PlayerHand" method="_on_s_pull_pressed"]
+[connection signal="pressed" from="TriplePullBtn" to="PlayerHand" method="_on_triple_pull_btn_pressed"]
+[connection signal="pressed" from="ConfirmBtn" to="PlayerHand" method="_on_confirm_btn_pressed"]

@@ -70,6 +70,11 @@ func draw_card():
 	$"../CardManager".add_child(new_card)
 	new_card.name = "Card"
 	add_card_to_hand(new_card)
+	
+	print("Last Pull")
+	print(card_drawn)
+	print("Pulls Left")
+	print(gacha_pon.size())
 
 func drop_ball():
 
@@ -159,13 +164,16 @@ func draw_card_three():
 		new_card.name = "Card"
 		add_card_to_hand(new_card)
 	
+	print("Last Pull")
+	print(hand_assess)
+	print("Pulls Left")
 	print(gacha_pon.size())
 
 func clear_hand():
+	
 	for child in $"../CardManager".get_children():
 		child.queue_free()
 	player_hand.clear()
-	print(player_hand)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -209,3 +217,36 @@ func _on_clear_hand_pressed() -> void:
 	if(gacha_pon.size() >= 3):
 		$"../TriplePull".show()
 	$"../ClearHand".hide()
+
+
+func _on_s_pull_pressed() -> void:
+	$"../SPull".hide()
+	$"../TriplePullBtn".hide()
+	$"../GachaPon".shake(15.0, 0.5)
+	await get_tree().create_timer(0.6).timeout
+	drop_ball()
+	await get_tree().create_timer(0.7).timeout
+	draw_card()
+	check_reserve_dump()
+	$"../ConfirmBtn".show()
+
+func _on_triple_pull_btn_pressed() -> void:
+	$"../SPull".hide()
+	$"../TriplePullBtn".hide()
+	$"../GachaPon".shake(15.0, 0.5)
+	await get_tree().create_timer(0.6).timeout
+	drop_ball()
+	await get_tree().create_timer(0.7).timeout
+	draw_card_three()
+	check_reserve_dump()
+	
+	$"../ConfirmBtn".show()
+
+
+func _on_confirm_btn_pressed() -> void:
+	clear_hand()
+	if(gacha_pon.size() >= 1):
+		$"../SPull".show()
+	if(gacha_pon.size() >= 3):
+		$"../TriplePullBtn".show()
+	$"../ConfirmBtn".hide()

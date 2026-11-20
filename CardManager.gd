@@ -1,14 +1,16 @@
 extends Node2D
 func _input(event):
-	
+	#pass
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			var mouse_pos = get_global_mouse_position()
-			print(mouse_pos.x)
-			print(mouse_pos.y)
-			#raycast check for card
+			#var mouse_pos = get_global_mouse_position()
+			#print(mouse_pos.x)
+			#print(mouse_pos.y)
+			var cheki = raycast_check_for_card()
+			if cheki:
+				cheki.flip_cheki()
 		else:
-			print("click release")
+			pass
 
 func raycast_check_for_card():
 	var space_state = get_world_2d().direct_space_state
