@@ -5,7 +5,7 @@ const CARD_SCENE_PATH = "res://Card.tscn"
 const BALL_SCENE_PATH = "res://GachaBall.tscn"
 const CARD_WIDTH = 200
 const HAND_Y_POSITION = 300
-
+const SCREEN_WIDTH = 1152
 
 var gacha_pon = []
 var cheki_reserve = ["sr","sr","sr","sr","sr"]
@@ -27,7 +27,8 @@ func _ready() -> void:
 	print(gacha_pon)
 	print(gacha_pon.size())
 		
-	center_screen_x = get_viewport().size.x / 2
+	#center_screen_x = get_viewport().size.x / 2
+	center_screen_x = SCREEN_WIDTH / 2
 	
 	print(center_screen_x)
 	
